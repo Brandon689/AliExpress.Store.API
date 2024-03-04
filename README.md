@@ -1,4 +1,4 @@
-Reverse engineer AliExpress product display API to quickly scrape data without needing authentication, html scraping, just request json. There is also another seperate API AliExpress uses but it is extremely stringent about the tokens to generate to access it.
+Reverse engineer AliExpress product display API to quickly scrape data without needing authentication, html scraping, just request json. There is also another internal API AliExpress uses but it is extremely stringent about the tokens to generate to access it.
 
 There is seemingly no expiry on the API token string, however you need to fetch it initially once using PlayWright.
 
