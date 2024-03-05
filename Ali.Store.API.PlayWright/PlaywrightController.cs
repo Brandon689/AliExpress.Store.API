@@ -1,7 +1,6 @@
 ﻿using Ali.Store.API.Models;
 using Ali.Store.API.Shared;
 using Microsoft.Playwright;
-using System.Net;
 
 namespace Ali.Store.API.PlayWright
 {
@@ -120,13 +119,96 @@ namespace Ali.Store.API.PlayWright
             //});
         }
 
+
+
+        //public async ValueTask<UserToken> FetchToken(string url)
+        //{
+        //    bool esc = false;
+        //    playwright = await Playwright.CreateAsync();
+        //    browser = await playwright.Chromium.LaunchAsync(new() { Headless = false });
+        //    page = await browser.NewPageAsync();
+        //    UserToken token = null;
+
+        //    //async Task CloseAndReturn()
+        //    //{
+        //    //    if (!page.IsClosed)
+        //    //    {
+        //    //        await page.CloseAsync();
+        //    //    }
+
+        //    //    await Dispose();
+        //    //}
+
+        //    await page.RouteAsync("**/*", async (route) =>
+        //    {
+        //        var request = route.Request;
+        //        Console.WriteLine(request.Url);
+
+        //        if (route.Request.ResourceType == "image"
+        //            || route.Request.ResourceType == "media"
+        //            || route.Request.ResourceType == "xhr"
+        //            || route.Request.ResourceType == "font")
+        //        {
+        //            await route.AbortAsync();
+        //        }
+
+        //        if (request.ResourceType == "script")
+        //        {
+        //            if (request.Url.Contains("shoprenderview.aliexpress.com/async/execute")
+        //                && request.Url.Contains("buyerId="))
+        //            {
+        //                await Console.Out.WriteLineAsync("FOUND");
+        //                xeni = request.Url;
+        //                Uri uri = new Uri(xeni);
+
+        //                // Access various components of the URL
+        //                string scheme = uri.Scheme;           // "https"
+        //                string host = uri.Host;               // "www.example.com"
+        //                string path = uri.AbsolutePath;       // "/path/to/page"
+        //                string query = uri.Query;             // "?param1=value1&param2=value2"
+
+        //                // Parse the query parameters
+        //                var queryParams = System.Web.HttpUtility.ParseQueryString(uri.Query);
+        //                token = new UserToken()
+        //                {
+        //                    CallBack = queryParams["callback"],
+        //                    BuyerId = queryParams["buyerId"],
+        //                    Country = queryParams["country"],
+        //                    Site = queryParams["site"],
+        //                    SellerId = queryParams["sellerId"],
+        //                    Locale = queryParams["locale"],
+        //                    Language = queryParams["language"],
+        //                };
+
+        //                //esc = true;
+        //                ///return;
+        //            }
+        //        }
+
+        //        if (esc)
+        //        {
+        //            //await route.AbortAsync();
+        //            //await CloseAndReturn();
+        //        }
+        //        //else
+        //        {
+        //            await route.ContinueAsync();
+        //        }
+        //    });
+
+        //    await page.GotoAsync(url);
+        //    return token;
+        //}
+
+
         public async Task Dispose()
         {
+            await page.CloseAsync();
             await browser.CloseAsync();
             playwright.Dispose();
             await browser.DisposeAsync();
         }
-        
+
         int bogo = 0;
 
         public async Task Goo()
@@ -166,7 +248,7 @@ namespace Ali.Store.API.PlayWright
                 await Task.Delay(2000);
             }
         }
-        
+
         //string y(string uri, int i)
         //{
         //    string decodedUrl = WebUtility.UrlDecode(uri);

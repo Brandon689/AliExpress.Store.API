@@ -1,6 +1,6 @@
-﻿using GlobalProduct.ProductJSON;
-using Ali.Store.API.Models;
+﻿using Ali.Store.API.Models;
 using GlobalProduct;
+using GlobalProduct.ProductJSON;
 
 namespace Ali.Store.API.Facade
 {
@@ -97,7 +97,7 @@ namespace Ali.Store.API.Facade
                             var sku = g.PriceComponent?.SkuPriceList.FirstOrDefault(f => f.SkuPropIds == id);
                             //var smog1 = g.SkuComponent?.ProductSKUPropertyList[0].Select(x => x.SkuPropertyValues).FirstOrDefault(s => s.PropertyValueId.ToString() == id);
                             var pv1 = g.SkuComponent?.ProductSKUPropertyList[0].SkuPropertyValues.FirstOrDefault(s => s.PropertyValueId.ToString() == id);
-                            
+
                             var variant = new Variant
                             {
                                 Title = pv1?.PropertyValueDisplayName,
